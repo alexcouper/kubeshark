@@ -1,0 +1,10 @@
+-r test.txt
+
+# documentation
+Sphinx==1.2.2
+sphinx_bootstrap_theme==0.4.0
+
+# code checks
+flake8==2.2.5
+
+psycopg2        # circle build fails due to this missing?

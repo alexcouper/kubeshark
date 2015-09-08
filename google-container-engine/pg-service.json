@@ -1,0 +1,21 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "db-service",
+    "labels": {
+      "component": "db"
+    }
+
+  },
+  "spec": {
+    "ports": [{
+      "port": 5432,
+      "targetPort": 5432
+    }],
+    "selector": {
+      "name": "postgres"
+    },
+    "type": "ClusterIP"
+  }
+}

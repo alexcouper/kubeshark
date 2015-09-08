@@ -1,0 +1,5 @@
+-r build.txt
+
+# dependency management
+ep>=0.1.9
+captainhook

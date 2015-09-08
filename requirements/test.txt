@@ -1,0 +1,8 @@
+-r runtime.txt
+
+coverage
+factory-boy
+invoke==0.10.1     # command line tool (fabric for py3)
+mock
+nose
+django-nose

@@ -1,0 +1,54 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "postgres",
+    "labels": {
+      "name": "postgres"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "resources": {
+          "limits": {
+            "cpu": 0.5
+          }
+        },
+        "image": "postgres",
+        "name": "postgres",
+        "env": [
+          {
+            "name": "DB_PASS",
+            "value": "somethingsecure"
+          },
+          {
+            "name": "PGDATA",
+            "value": "/var/lib/postgresql/data/data"
+          }
+        ],
+        "ports": [
+          {
+            "containerPort": 5432,
+            "name": "postgres"
+          }
+        ],
+        "volumeMounts": [
+          {
+            "name": "persistent-storage",
+            "mountPath": "/var/lib/postgresql/data"
+          }
+        ]
+      }
+    ],
+    "volumes": [
+      {
+        "name": "persistent-storage",
+        "gcePersistentDisk": {
+          "pdName": "pg-data-disk",
+          "fsType": "ext4"
+        }
+      }
+    ]
+  }
+}

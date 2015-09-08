@@ -1,0 +1,6 @@
+Django==1.8.3
+
+django-cors-headers==1.1.0       # Support Cross-Origin Resource Sharing headers
+djangorestframework==3.1.3       # REST API layer
+djangorestframework-jwt==1.6.0   # JSON Web Token implementation
+dj-database-url==0.3.0           # Setup database from a single env var

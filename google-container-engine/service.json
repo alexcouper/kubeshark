@@ -1,0 +1,21 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "kubeshark-service",
+    "labels": {
+      "app": "api"
+    }
+
+  },
+  "spec": {
+    "ports": [{
+      "port": 80,
+      "targetPort": 80
+    }],
+    "selector": {
+      "app": "api"
+    },
+    "type": "LoadBalancer"
+  }
+}
