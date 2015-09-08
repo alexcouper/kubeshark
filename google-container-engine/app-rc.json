@@ -1,0 +1,51 @@
+{
+  "kind": "ReplicationController",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "kubeshark-app-rc",
+    "labels": {
+      "state": "serving",
+      "app": "api",
+      "deployment": "0.1"
+    }
+  },
+  "spec": {
+    "replicas": 2,
+    "selector": {
+      "app": "api",
+      "deployment": "0.1"
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "api",
+          "deployment": "0.1"
+        }
+      },
+      "spec": {
+        "volumes": null,
+        "containers": [
+          {
+            "name": "kubeshark",
+            "image": "gcr.io/js-rvk/kubeshark:0.1",
+            "ports": [
+              {
+                "containerPort": 80,
+                "protocol": "TCP"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent",
+            "env": [
+              {
+                "name": "DATABASE_URL",
+                "value": "postgres://postgres@db-service:5432/kubeshark"
+              }
+            ]
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst"
+      }
+    }
+  }
+}

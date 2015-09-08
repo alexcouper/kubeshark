@@ -1,0 +1,20 @@
+docker tag kubeshark:latest gcr.io/js-rvk/kubeshark:0.1
+gcloud docker push gcr.io/js-rvk/kubeshark:0.1
+#Create replication controller managing pods
+kubectl create -f google-container-engine/app-rc.json
+
+# Show that you can wget on the running pod
+kubectl get pods
+kubectl exec -it <pod name> bash
+sudo apt-get install wget
+wget localhost:80
+cat index.html
+
+# Create a service so we can actually do stuff with this pod
+kubectl create -f google-container-engine/service.json
+
+# Wait for an external ip to be assigned.
+kubectl get service
+
+# Go to that ip!
+# You should see the site!
