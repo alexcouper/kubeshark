@@ -1,0 +1,22 @@
+<VirtualHost *>
+
+    Alias /health.html /var/www/html/health.html
+    Alias /static /srv/kubeshark/collected_static
+
+    <Files health.html>
+         Require all granted
+    </Files>
+
+    WSGIDaemonProcess review python-path=/srv/kubeshark
+    WSGIProcessGroup review
+    WSGIScriptAlias / /srv/kubeshark/kubeshark/wsgi.py
+    WSGIPassAuthorization On
+
+    <Directory /srv/kubeshark/>
+        Require all granted
+    </Directory>
+
+    CustomLog /dev/stdout combined
+    ErrorLog /dev/stdout
+
+</VirtualHost>
