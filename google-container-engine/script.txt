@@ -18,3 +18,21 @@ kubectl get service
 
 # Go to that ip!
 # You should see the site!
+
+# Show that there is no such thing of db-service from the pod
+kubectl exec -it <pod_name> bash
+
+# Create a postgres pod
+# Create a postgres service
+
+# Show service discovery in action!
+
+kubectl exec -ti postgres "su - postgres -c psql"
+CREATE DATABASE kubeshark
+
+
+
+
+
+Notes:
+UI: https://github.com/IronSummitMedia/startbootstrap-landing-page

@@ -21,5 +21,5 @@ from sales.views import SharkView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^', SharkView.as_view()),
+    url(r'^$', SharkView.as_view()),
 ]
