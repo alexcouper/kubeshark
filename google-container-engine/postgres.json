@@ -12,7 +12,7 @@
       {
         "resources": {
           "limits": {
-            "cpu": 0.5
+            "cpu": 0.1
           }
         },
         "image": "postgres",
@@ -45,7 +45,7 @@
       {
         "name": "persistent-storage",
         "gcePersistentDisk": {
-          "pdName": "pg-data-disk",
+          "pdName": "postgres-disk",
           "fsType": "ext4"
         }
       }
