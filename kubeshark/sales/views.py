@@ -11,7 +11,6 @@ class SharkView(View):
     def get(self, request):
         sharks = KnownKubeShark.objects.filter().order_by('-created')[:5]
         names = [s.name for s in sharks]
-        print([s.created for s in sharks])
         return render(request, self.template_name, context={'sharks':names})
 
     def post(self, request):
